@@ -1,0 +1,6 @@
+@wsb_oop_HostAddress = http://localhost:5202
+
+GET {{wsb_oop_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
