@@ -7,14 +7,14 @@ public class ProductService(ProductDbContext productDbContext) : IProductService
 {
     public ProductDto CreateProduct(CreateProductDto createProductDto)
     {
-        var productEntity = new ProductEntity("");
+        var productEntity = new ProductEntity("asd", "asdfggghh");
         productDbContext.Add(productEntity);
         productDbContext.SaveChanges();
 
         return new ProductDto(
             Name: createProductDto.Name,
             Description: createProductDto.Description,
-            Id: 12
+            Id: Guid.NewGuid()
         );
     }
 }

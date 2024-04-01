@@ -18,7 +18,7 @@ public class ProductController(IProductService productService) : ControllerBase
     [HttpGet]
     public IActionResult GetAllProducts()
     {
-        var response = new ProductDto(12, "test", "description");
+        var response = new ProductDto(Guid.NewGuid(),"test", "description");
         return Ok(response);
     }
 }
