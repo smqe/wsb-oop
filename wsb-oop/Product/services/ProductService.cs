@@ -3,20 +3,13 @@ using wsb_oop.Product.model;
 
 namespace wsb_oop.Product.services;
 
-public class ProductService : IProductService
+public class ProductService(ProductDbContext productDbContext) : IProductService
 {
-    private readonly ProductDbContext _productDbContext;
-
-    public ProductService(ProductDbContext productDbContext)
-    {
-        _productDbContext = productDbContext;
-    }
-
     public ProductDto CreateProduct(CreateProductDto createProductDto)
     {
         var productEntity = new ProductEntity("");
-        _productDbContext.Add(productEntity);
-        _productDbContext.SaveChanges();
+        productDbContext.Add(productEntity);
+        productDbContext.SaveChanges();
 
         return new ProductDto(
             Name: createProductDto.Name,

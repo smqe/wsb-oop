@@ -6,19 +6,12 @@ namespace wsb_oop.Product.controllers;
 
 [ApiController]
 [Route("/product")]
-public class ProductController : ControllerBase
+public class ProductController(IProductService productService) : ControllerBase
 {
-    private readonly IProductService _productService;
-
-    public ProductController(IProductService productService)
-    {
-        _productService = productService;
-    }
-
     [HttpPost]
     public IActionResult CreateProduct(CreateProductDto createProductDto)
     {
-        var productDto = _productService.CreateProduct(createProductDto);
+        var productDto = productService.CreateProduct(createProductDto);
         return Ok(productDto);
     }
 
