@@ -2,7 +2,7 @@
 
 namespace wsb_oop.Product.mappers;
 
-public class ProductMapper
+public sealed class ProductMapper
 {
     public ProductEntity ToEntity(CreateProductDto createProductDto)
     {
