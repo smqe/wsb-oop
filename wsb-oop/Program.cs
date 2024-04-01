@@ -1,11 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using wsb_oop.Product.db;
+using wsb_oop.Product.mappers;
 using wsb_oop.Product.services;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 services.AddControllers();
 services.AddScoped<IProductService, ProductService>();
+services.AddScoped<ProductMapper>();
 services.AddDbContext<ProductDbContext>(options=>
     options.UseSqlite("Data Source=Product.sqlite")
 );
