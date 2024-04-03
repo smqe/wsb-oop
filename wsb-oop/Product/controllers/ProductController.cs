@@ -21,4 +21,18 @@ public class ProductController(IProductService productService) : ControllerBase
         var response = new ProductDto(Guid.NewGuid(),"test", "description");
         return Ok(response);
     }
+
+    [HttpGet("{id}")]
+    public IActionResult GetProductId(string id)
+    {
+        var productDto = productService.GetProduct(id);
+        return Ok(productDto);
+    }
+
+    [HttpDelete("{id}")]
+    public IActionResult Delete(string id)
+    {
+            productService.DeleteProduct(id);
+            return NoContent();
+    }
 }
