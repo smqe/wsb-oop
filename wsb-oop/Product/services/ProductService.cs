@@ -27,13 +27,5 @@ public class ProductService(ProductDbContext productDbContext, ProductMapper pro
         var entity = productDbContext.ProductEntities.Find(Guid.Parse(id));
         productDbContext.ProductEntities.Remove(entity);
         productDbContext.SaveChanges();
-        
-        /*Customer customer = new Customer () { Id = id };
-       context.Customers.Attach(customer);
-       context.Customers.Remove(customer);
-       context.SaveChanges();*/ 
-        
-        //var entity1 = new ProductEntity() { Id = id };
-
     }
 }
