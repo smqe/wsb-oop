@@ -32,7 +32,7 @@ public class ProductController(IProductService productService) : ControllerBase
     [HttpDelete("{id}")]
     public IActionResult Delete(string id)
     {
-            productService.DeleteProduct(id);
-            return NoContent();
+        var response = productService.DeleteProduct(id);
+        return Ok(response);
     }
 }
