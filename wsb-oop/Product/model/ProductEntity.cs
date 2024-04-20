@@ -7,7 +7,7 @@ public class ProductEntity(string name, string description)
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid Id { get; init; }
+    public Guid Id { get; init;  }
     public string Name = name;
     public string Description = description;
 }
