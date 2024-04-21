@@ -6,8 +6,8 @@ public interface IProductService
 {
     ProductDto CreateProduct(CreateProductDto createProductDto);
 
-    ProductDto GetProduct(string id);
-    
-    void DeleteProduct(string id);
-    
+    ProductDto GetProductById(string id);
+
+    void DeleteProductById(string id);
+    ProductDto UpdateProductById(string id, UpdateProductDto updateProductDto);
 }

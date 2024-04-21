@@ -18,21 +18,28 @@ public class ProductController(IProductService productService) : ControllerBase
     [HttpGet]
     public IActionResult GetAllProducts()
     {
-        var response = new ProductDto(Guid.NewGuid(),"test", "description");
+        var response = new ProductDto(Guid.NewGuid(), "test", "description");
         return Ok(response);
     }
 
     [HttpGet("{id}")]
     public IActionResult GetProductId(string id)
     {
-        var productDto = productService.GetProduct(id);
-        return Ok(productDto);
+        var response = productService.GetProductById(id);
+        return Ok(response);
     }
 
     [HttpDelete("{id}")]
-    public IActionResult Delete(string id)
+    public IActionResult DeleteById(string id)
     {
-        var response = productService.DeleteProduct(id);
+        productService.DeleteProductById(id);
+        return NoContent();
+    }
+
+    [HttpPut("{id}")]
+    public IActionResult UpdateById(string id, UpdateProductDto updateProductDto)
+    {
+        var response = productService.UpdateProductById(id, updateProductDto);
         return Ok(response);
     }
 }
