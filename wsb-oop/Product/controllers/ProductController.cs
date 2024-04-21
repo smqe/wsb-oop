@@ -14,14 +14,7 @@ public class ProductController(IProductService productService) : ControllerBase
         var productDto = productService.CreateProduct(createProductDto);
         return Ok(productDto);
     }
-
-    [HttpGet]
-    public IActionResult GetAllProducts()
-    {
-        var response = new ProductDto(Guid.NewGuid(), "test", "description");
-        return Ok(response);
-    }
-
+    
     [HttpGet("{id}")]
     public IActionResult GetProductId(string id)
     {
