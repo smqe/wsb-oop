@@ -2,7 +2,7 @@
 
 ## Temat: System zarządzania produktami
 
-## Autor: Stużyński, Błażej Szulik, Bartłomiej Szulik, Marcin Śmieszek
+## Autor: Dawid Stużyński, Błażej Szulik, Bartłomiej Szulik, Marcin Śmieszek
 
 ## Opis i Założenia Projektu
 
@@ -22,7 +22,7 @@ język C# oraz technologię ASP.NET Core.
 
 - Język programowania: C#
 - Framework: ASP.NET Core
-- Baza danych: SQL Lite
+- Baza danych: SQLite
 
 ## Opis Techniczny Projektu
 
