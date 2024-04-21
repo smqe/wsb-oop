@@ -14,11 +14,18 @@ public class ProductController(IProductService productService) : ControllerBase
         var productDto = productService.CreateProduct(createProductDto);
         return Ok(productDto);
     }
-    
+
     [HttpGet("{id}")]
     public IActionResult GetProductId(string id)
     {
         var response = productService.GetProductById(id);
+        return Ok(response);
+    }
+
+    [HttpGet]
+    public IActionResult GetAllProducts()
+    {
+        var response = productService.GetAllProducts();
         return Ok(response);
     }
 

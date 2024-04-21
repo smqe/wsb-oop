@@ -26,6 +26,15 @@ public class ProductService(ProductDbContext productDbContext, ProductMapper pro
         return productMapper.ToDto(entity);
     }
 
+    public ProductListDto GetAllProducts()
+    {
+        var allProducts = productDbContext.ProductEntities.ToList();
+        var productDtos = allProducts.Select(productMapper.ToDto).ToList();
+        var productListDto = new ProductListDto(productDtos);
+
+        return productListDto;
+    }
+
     public void DeleteProductById(string id)
     {
         var entity = productDbContext.ProductEntities.Find(Guid.Parse(id));

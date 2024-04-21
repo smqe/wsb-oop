@@ -8,7 +8,9 @@ public interface IProductService
 
     ProductDto GetProductById(string id);
 
+    ProductListDto GetAllProducts();
+
     void DeleteProductById(string id);
-    
+
     ProductDto UpdateProductById(string id, UpdateProductDto updateProductDto);
 }
