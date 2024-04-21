@@ -1,4 +1,5 @@
 using wsb_oop.Product.db;
+using wsb_oop.Product.exceptions;
 using wsb_oop.Product.mappers;
 using wsb_oop.Product.model;
 
@@ -14,18 +15,46 @@ public class ProductService(ProductDbContext productDbContext, ProductMapper pro
         return productMapper.ToDto(entity);
     }
 
-    public ProductDto GetProduct(string id)
+    public ProductDto GetProductById(string id)
     {
         var entity = productDbContext.ProductEntities.Find(Guid.Parse(id));
-        if (entity != null) return productMapper.ToDto(entity);
-        return null;
+        if (entity is null)
+        {
+            throw new ProductNotFoundException($"Product with id: {id} not exists");
+        }
+
+        return productMapper.ToDto(entity);
     }
 
-    public void DeleteProduct(string id)
+    public ProductListDto GetAllProducts()
     {
-        var guid = Guid.Parse(id);
+        var allProducts = productDbContext.ProductEntities.ToList();
+        var productDtos = allProducts.Select(productMapper.ToDto).ToList();
+        var productListDto = new ProductListDto(productDtos);
+
+        return productListDto;
+    }
+
+    public void DeleteProductById(string id)
+    {
         var entity = productDbContext.ProductEntities.Find(Guid.Parse(id));
+        if (entity == null) return;
         productDbContext.ProductEntities.Remove(entity);
         productDbContext.SaveChanges();
+    }
+
+    public ProductDto UpdateProductById(string id, UpdateProductDto updateProductDto)
+    {
+        var entity = productDbContext.ProductEntities.Find(Guid.Parse(id));
+        if (entity is null)
+        {
+            throw new ProductNotFoundException(
+                $"Cannot update product with id: {id} because product with this does not exists");
+        }
+
+        entity.Name = updateProductDto.Name;
+        entity.Description = updateProductDto.Description;
+        productDbContext.SaveChanges();
+        return productMapper.ToDto(entity);
     }
 }
