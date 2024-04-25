@@ -66,4 +66,4 @@ język C# oraz technologię ASP.NET Core.
 
 Projekt został zaimplementowany zgodnie z założeniami i spełnia wszystkie wymagania funkcjonalne. Wykorzystanie
 podejścia obiektowego, interfejsów oraz hermetyzacji przyczyniło się do czytelności, elastyczności i łatwości
-rozszerzania kodu. 
+rozszerzania kodu. Przetestowanie funkcjonalności umożliwia swagger dostępny po uruchomieniu aplikacji pod adresem `http://localhost:5202/swagger/index.html` 
