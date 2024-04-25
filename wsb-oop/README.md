@@ -1,4 +1,4 @@
-# Projekt z Programowania Obiektowego
+# Projekt z Programowania Obiektowego Grupa: I_Inf_NW_2
 
 ## Temat: System zarządzania produktami
 
